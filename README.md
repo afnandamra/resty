@@ -1,4 +1,31 @@
-# Getting Started with Create React App
+# LAB - Component Based UI
+
+RESTy Phase 1: Begin work on the RESTy API testing application
+
+**Author:** Afnan Damra
+**Version:** 1.0.0
+
+**Links:**
+
+- [Repo Link](https://github.com/afnandamra/resty)
+- [Deployed Site](https://ad-resty-react.netlify.app/)
+- [PR Link](https://github.com/afnandamra/resty/pull/1)
+
+## Documentation
+
+### UML Diagram
+
+![UML Lab26](public/UML-lab26.png)
+
+## Resources
+
+[React docs](https://reactjs.org/docs/getting-started.html)
+
+
+-----
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
