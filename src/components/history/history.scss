@@ -1,0 +1,21 @@
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+//   table-layout: fixed;
+  width: 40vw;
+  border: 1px solid #222;
+  th {
+    border-bottom: 3px solid black;
+  }
+  td,
+  th {
+    padding-left: 1rem;
+  }
+  tr {
+    height: 2rem;
+  }
+  .fwidth {
+    width: 25%;
+    border-right: 1px solid #222;
+  }
+}
