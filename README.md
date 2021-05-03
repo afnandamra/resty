@@ -8,7 +8,7 @@ RESTy Phase 1: Begin work on the RESTy API testing application
 **Links:**
 
 - [Repo Link](https://github.com/afnandamra/resty)
-- [Deployed Site](https://ad-resty-react.netlify.app/)
+- [Deployed Site](https://ad-resty-401.netlify.app/)
 - [PR Link](https://github.com/afnandamra/resty/pull/1)
 
 ## Documentation
