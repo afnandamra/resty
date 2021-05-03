@@ -23,6 +23,7 @@ RESTy Phase 2: Connect RESTy with APIs, running live requests
 [React docs](https://reactjs.org/docs/getting-started.html)
 [react pretty JSON](https://github.com/mac-s-g/react-json-view)
 [testing-library docs](https://testing-library.com/docs/)
+[deploying gh-pages](https://github.com/gitname/react-gh-pages)
 
 ---
 
