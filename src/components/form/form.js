@@ -33,7 +33,6 @@ class Form extends React.Component {
         const result = await superagent[this.state.method.toLowerCase()](
           e.target.url.value
         );
-        console.log(result);
         let { headers, body } = result;
         this.props.handler(headers, body, this.state);
       }
@@ -58,7 +57,6 @@ class Form extends React.Component {
           type="text"
           name="url"
           placeholder="http://api.url.here"
-          required
         />
         <textarea type="text" name="body" placeholder="Request body..." rows="6" cols="40" />
         <div id="rest-buttons">

@@ -19,7 +19,7 @@ class App extends React.Component {
     };
   }
   handleForm = (headers, body, state) => {
-    console.log(headers, body, state.url, state.method);
+    // console.log(headers, body, state.url, state.method);
     this.state.urls.push(state.url);
     this.state.methods.push(state.method);
     if (headers && body) {

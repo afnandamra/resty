@@ -4,7 +4,7 @@ import './results.scss';
 
 function Results({ props }) {
   return (
-    <section id="resultSec">
+    <section id="resultSec" data-testid="resultSec">
       <ReactJson
         src={props.headers}
         name="Headers"

@@ -14,7 +14,7 @@ function History({ props }) {
         <tbody>
           {props.methods.map((val, i) => {
             return (
-              <tr key={i}>
+              <tr key={i} data-testid="url">
                 <td className="fwidth">{val}</td>
                 <td>{props.urls[i]}</td>
               </tr>

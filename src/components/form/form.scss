@@ -1,17 +1,24 @@
 form {
+  margin: 3rem auto 2rem auto;
+  width: 40%;
+  text-align: center;
+  background-color: white;
   input {
     margin: 1rem;
     line-height: 1.5rem;
     inline-size: 30%;
     padding-left: 0.5rem;
   }
-  textarea{
+  textarea {
     padding: 0.5rem;
   }
   button {
     padding: 0 1rem;
     height: 1.9rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
+  }
+  button:ho {
+    background-color: palevioletred;
   }
   .button {
     background: #f5f5f5;
@@ -23,16 +30,11 @@ form {
     height: 2rem;
     margin: 1.5rem 0.5rem;
   }
-  #rest-buttons{
+  #rest-buttons {
     margin: 1rem 0;
   }
   .true {
     background-color: rgb(175, 183, 192);
-    // background-color: rgb(193, 239, 247);
     border: 1px solid lightslategray;
   }
-  margin: 3rem auto 2rem auto;
-  width: 40%;
-  text-align:center;
 }
-
