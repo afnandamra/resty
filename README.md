@@ -9,6 +9,7 @@ RESTy Phase 2: Connect RESTy with APIs, running live requests
 
 - [Repo Link](https://github.com/afnandamra/resty)
 - [Deployed Site](https://ad-resty-401.netlify.app/)
+- [GitHub pages Deployement](https://afnandamra.github.io/resty/)
 - [PR Link](https://github.com/afnandamra/resty/pull/4)
 
 ## Documentation
