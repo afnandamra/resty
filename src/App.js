@@ -4,6 +4,7 @@ import './App.scss';
 import Header from './components/header/header';
 import Form from './components/form/form';
 import History from './components/history/history';
+import Results from './components/results/results';
 import Footer from './components/footer/footer';
 
 class App extends React.Component {
@@ -11,20 +12,29 @@ class App extends React.Component {
     super(props);
     this.state = {
       count: 0,
-      Headers: {},
-      Response: [],
+      headers: {},
+      response: [],
       urls: [],
       methods: [],
     };
   }
-  handleForm = (Headers, Response, url, method) => {
-    this.state.urls.push(url);
-    this.state.methods.push(method);
-    this.setState({
-      count: Response.count || 1,
-      Headers: Headers,
-      Response: Response,
-    });
+  handleForm = (headers, body, state) => {
+    console.log(headers, body, state.url, state.method);
+    this.state.urls.push(state.url);
+    this.state.methods.push(state.method);
+    if (headers && body) {
+      this.setState({
+        count: body.count || this.state.count + 1,
+        headers: headers,
+        response: body,
+      });
+    } else {
+      this.setState({
+        count: this.state.count + 1,
+        headers: {message: 'Not Available'},
+        response: body
+      })
+    }
   };
   render() {
     return (
@@ -32,7 +42,12 @@ class App extends React.Component {
         <Header />
         <main>
           <Form prompt="GO!" handler={this.handleForm} />
-          <History props={{urls: this.state.urls, methods: this.state.methods}}  />
+          <section id="results">
+            <History
+              props={{ urls: this.state.urls, methods: this.state.methods }}
+            />
+            <Results props={this.state} />
+          </section>
         </main>
         <Footer />
       </>

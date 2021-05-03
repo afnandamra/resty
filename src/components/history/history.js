@@ -3,7 +3,7 @@ import './history.scss';
 
 function History({ props }) {
   return (
-    <section id="result">
+    <section id="history">
       <table>
         <thead>
           <tr>

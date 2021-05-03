@@ -1,5 +1,6 @@
 import React from 'react';
 import './form.scss';
+const superagent = require('superagent');
 
 class Form extends React.Component {
   constructor(props) {
@@ -10,33 +11,56 @@ class Form extends React.Component {
     };
   }
 
-  handleChange = (e) => {
-    this.setState({ url: e.target.value });
-  };
-
   changeMethod = (e) => {
     this.setState({ method: e.target.innerHTML });
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const raw = await fetch(e.target.url.value);
-    const data = await raw.json();
-    this.props.handler(raw.headers, data, this.state.url, this.state.method);
+    this.setState({
+      url: e.target.url.value,
+      method: this.state.method,
+    });
+    try {
+      let reqBody = e.target.body.value;
+      if (this.state.method === 'POST' || this.state.method === 'PUT') {
+        const result = await superagent[this.state.method.toLowerCase()](
+          e.target.url.value
+        ).send(reqBody)
+        let { headers, body } = result;
+        this.props.handler(headers, body, this.state);
+      } else {
+        const result = await superagent[this.state.method.toLowerCase()](
+          e.target.url.value
+        );
+        console.log(result);
+        let { headers, body } = result;
+        this.props.handler(headers, body, this.state);
+      }
+      // const raw = await fetch(e.target.url.value, {
+      //   // method: this.state.method,
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+    } catch (e) {
+      this.props.handler(null, e.message, this.state);
+      console.log(e.message);
+    }
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <fieldset>
         <label>URL:</label>
         <input
-          onChange={this.handleChange}
           type="text"
           name="url"
           placeholder="http://api.url.here"
           required
         />
-        <button type="submit">{this.props.prompt}</button>
+        <textarea type="text" name="body" placeholder="Request body..." rows="6" cols="40" />
         <div id="rest-buttons">
           <span
             className={`button ${this.state.method === 'GET'}`}
@@ -63,6 +87,8 @@ class Form extends React.Component {
             DELETE
           </span>
         </div>
+        <button type="submit">{this.props.prompt}</button>
+        </fieldset>
       </form>
     );
   }

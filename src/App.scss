@@ -1,5 +1,10 @@
 main {
-  position: relative;
-  top: 10vh;
-  height: 80vh;
+  padding: 15vh 0;
+  #results{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  z-index: 0;
 }
