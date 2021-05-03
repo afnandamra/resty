@@ -1,5 +1,6 @@
 import React from 'react';
 import './form.scss';
+const superagent = require('superagent');
 
 class Form extends React.Component {
   constructor(props) {
@@ -10,76 +11,83 @@ class Form extends React.Component {
     };
   }
 
-  addUrl = () => {
-    this.setState({
-      url: this.state.input,
-      method: this.state.addmethod,
-    });
-  };
-
-  handleChange = (e) => {
-    this.setState({ input: e.target.value });
-  };
-
   changeMethod = (e) => {
-    this.setState({ addmethod: e.target.innerHTML });
+    this.setState({ method: e.target.innerHTML });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.setState({
+      url: e.target.url.value,
+      method: this.state.method,
+    });
+    try {
+      let reqBody = e.target.body.value;
+      if (this.state.method === 'POST' || this.state.method === 'PUT') {
+        const result = await superagent[this.state.method.toLowerCase()](
+          e.target.url.value
+        ).send(reqBody)
+        let { headers, body } = result;
+        this.props.handler(headers, body, this.state);
+      } else {
+        const result = await superagent[this.state.method.toLowerCase()](
+          e.target.url.value
+        );
+        let { headers, body } = result;
+        this.props.handler(headers, body, this.state);
+      }
+      // const raw = await fetch(e.target.url.value, {
+      //   // method: this.state.method,
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+    } catch (e) {
+      this.props.handler(null, e.message, this.state);
+      console.log(e.message);
+    }
   };
 
   render() {
     return (
-      <main>
-        <form>
-          <label>URL:</label>
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="url"
-            placeholder="http://api.url.here"
-            required
-          />
-          <button type="button" onClick={this.addUrl}>
-            GO!
-          </button>
-          <div id="rest-buttons">
-            <span
-              className={`button ${this.state.addmethod === 'GET'}`}
-              onClick={this.changeMethod}
-            >
-              GET
-            </span>
-            <span
-              className={`button ${this.state.addmethod === 'POST'}`}
-              onClick={this.changeMethod}
-            >
-              POST
-            </span>
-            <span
-              className={`button ${this.state.addmethod === 'PUT'}`}
-              onClick={this.changeMethod}
-            >
-              PUT
-            </span>
-            <span
-              className={`button ${this.state.addmethod === 'DELETE'}`}
-              onClick={this.changeMethod}
-            >
-              DELETE
-            </span>
-          </div>
-        </form>
-        <section id="result">
-          <table>
-            <tr>
-              <th className="fwidth">Method</th>
-              <th>URL</th>
-            </tr>
-            <tr>
-              <td className="fwidth">{this.state.method}</td>
-              <td>{this.state.url}</td>
-            </tr>
-          </table>
-        </section>
-      </main>
+      <form onSubmit={this.handleSubmit}>
+        <fieldset>
+        <label>URL:</label>
+        <input
+          type="text"
+          name="url"
+          placeholder="http://api.url.here"
+        />
+        <textarea type="text" name="body" placeholder="Request body..." rows="6" cols="40" />
+        <div id="rest-buttons">
+          <span
+            className={`button ${this.state.method === 'GET'}`}
+            onClick={this.changeMethod}
+          >
+            GET
+          </span>
+          <span
+            className={`button ${this.state.method === 'POST'}`}
+            onClick={this.changeMethod}
+          >
+            POST
+          </span>
+          <span
+            className={`button ${this.state.method === 'PUT'}`}
+            onClick={this.changeMethod}
+          >
+            PUT
+          </span>
+          <span
+            className={`button ${this.state.method === 'DELETE'}`}
+            onClick={this.changeMethod}
+          >
+            DELETE
+          </span>
+        </div>
+        <button type="submit">{this.props.prompt}</button>
+        </fieldset>
+      </form>
     );
   }
 }

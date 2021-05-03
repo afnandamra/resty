@@ -1,0 +1,11 @@
+main {
+  padding: 13vh 0 15vh 0;
+  #results{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  z-index: 0;
+  background-color: beige;
+}

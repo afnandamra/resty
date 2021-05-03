@@ -1,0 +1,22 @@
+table {
+  margin-left: 6rem;
+  border-collapse: collapse;
+//   table-layout: fixed;
+  width: 70%;
+  border: 1px solid #222;
+  background-color: white;
+  th {
+    border-bottom: 3px solid black;
+  }
+  td,
+  th {
+    padding-left: 1rem;
+  }
+  tr {
+    height: 2rem;
+  }
+  .fwidth {
+    width: 25%;
+    border-right: 1px solid #222;
+  }
+}

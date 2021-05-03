@@ -1,15 +1,15 @@
-# LAB - Component Based UI
+# LAB - Props and State
 
-RESTy Phase 1: Begin work on the RESTy API testing application
+RESTy Phase 2: Connect RESTy with APIs, running live requests
 
 **Author:** Afnan Damra
-**Version:** 1.0.0
+**Version:** 2.0.0
 
 **Links:**
 
 - [Repo Link](https://github.com/afnandamra/resty)
 - [Deployed Site](https://ad-resty-401.netlify.app/)
-- [PR Link](https://github.com/afnandamra/resty/pull/1)
+- [PR Link](https://github.com/afnandamra/resty/pull/4)
 
 ## Documentation
 
@@ -20,10 +20,10 @@ RESTy Phase 1: Begin work on the RESTy API testing application
 ## Resources
 
 [React docs](https://reactjs.org/docs/getting-started.html)
+[react pretty JSON](https://github.com/mac-s-g/react-json-view)
+[testing-library docs](https://testing-library.com/docs/)
 
-
------
-
+---
 
 ## Getting Started with Create React App
 
