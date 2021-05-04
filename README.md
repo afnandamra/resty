@@ -9,19 +9,21 @@ RESTy Phase 2: Connect RESTy with APIs, running live requests
 
 - [Repo Link](https://github.com/afnandamra/resty)
 - [Deployed Site](https://ad-resty-401.netlify.app/)
+- [GitHub pages Deployement](https://afnandamra.github.io/resty/)
 - [PR Link](https://github.com/afnandamra/resty/pull/4)
 
 ## Documentation
 
 ### UML Diagram
 
-![UML Lab26](public/UML-lab26.png)
+![UML Lab26](public/UML27.jpg)
 
 ## Resources
 
 [React docs](https://reactjs.org/docs/getting-started.html)
 [react pretty JSON](https://github.com/mac-s-g/react-json-view)
 [testing-library docs](https://testing-library.com/docs/)
+[deploying gh-pages](https://github.com/gitname/react-gh-pages)
 
 ---
 

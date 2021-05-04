@@ -7,7 +7,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       url: '',
-      method: '',
+      method: 'GET',
     };
   }
 
