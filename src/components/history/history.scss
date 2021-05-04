@@ -1,22 +1,40 @@
 table {
   margin-left: 6rem;
   border-collapse: collapse;
-//   table-layout: fixed;
+  //   table-layout: fixed;
   width: 70%;
   border: 1px solid #222;
   background-color: white;
-  th {
+
+  thead {
     border-bottom: 3px solid black;
   }
-  td,
-  th {
+  th,td{
+    border-bottom: 1px solid black;
+  }
+  td {
+    cursor: pointer;
     padding-left: 1rem;
   }
   tr {
     height: 2rem;
   }
   .fwidth {
+    text-align: center;
     width: 25%;
     border-right: 1px solid #222;
+    font-weight: 700;
+  }
+  #hisGET {
+    background-color: rgb(114, 125, 228);
+  }
+  #hisPOST {
+    background-color: rgb(122, 241, 106);
+  }
+  #hisPUT {
+    background-color: rgb(228, 213, 82);
+  }
+  #hisDELETE {
+    background-color: rgb(228, 114, 114);
   }
 }

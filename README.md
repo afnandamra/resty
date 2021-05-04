@@ -16,7 +16,7 @@ RESTy Phase 3: Add conditional rendering to RESTy
 
 ### UML Diagram
 
-![UML Lab28](public/UML28.jpg)
+![UML Lab28](public/UML27.jpg)
 
 ## Resources
 
@@ -24,6 +24,8 @@ RESTy Phase 3: Add conditional rendering to RESTy
 - [react pretty JSON](https://github.com/mac-s-g/react-json-view)
 - [testing-library docs](https://testing-library.com/docs/)
 - [deploying gh-pages](https://github.com/gitname/react-gh-pages)
+- [find unique objects in an array](https://codeburst.io/javascript-array-distinct-5edc93501dc4)
+- [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner)
 
 ---
 

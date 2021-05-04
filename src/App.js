@@ -8,6 +8,8 @@ import History from './components/history/history';
 import Results from './components/results/results';
 import Footer from './components/footer/footer';
 
+const superagent = require('superagent');
+
 let history = JSON.parse(localStorage.getItem('history'));
 
 class App extends React.Component {
@@ -20,43 +22,85 @@ class App extends React.Component {
       history: {},
       storageArray: history || [],
       trigger: false,
+      fetching: false,
     };
   }
 
-  handleForm = (headers, body, state) => {
+  handleForm = async (state) => {
+    this.setState({ fetching: true, trigger: true });
+    console.log(Date.now() / 1000);
+    try {
+      let reqBody = state.body;
+      if (state.method === 'POST' || state.method === 'PUT') {
+        const result = await superagent[state.method.toLowerCase()](
+          state.url
+        ).send(reqBody);
+        let { headers, body } = result;
+        this.handler(headers, body, state);
+      } else {
+        const result = await superagent[state.method.toLowerCase()](state.url);
+        let { headers, body } = result;
+        this.handler(headers, body, state);
+      }
+    } catch (e) {
+      this.handler(null, e.message, state);
+      console.log(e.message);
+    }
+  };
+
+  handler = (headers, body, state) => {
     if (headers && body) {
       let storageObj = {
-        id: state.method+state.url,
+        id: state.method + state.url,
         url: state.url,
         method: state.method,
         body: state.body,
       };
+      this.state.storageArray.push(storageObj);
+
+      const uniqueArr = [];
+      const map = new Map();
+      for (const item of this.state.storageArray) {
+        if (!map.has(item.id)) {
+          map.set(item.id, true);
+          uniqueArr.push({
+            id: item.id,
+            url: item.url,
+            method: item.method,
+            body: item.body,
+          });
+        }
+      }
+
       this.setState({
         count: body.count || this.state.count + 1,
         headers: headers,
         response: body,
-        trigger: true,
-        storageArray: [...this.state.storageArray, storageObj],
+        storageArray: [...uniqueArr],
+        fetching: false,
       });
-      localStorage.setItem('history', JSON.stringify(this.state.storageArray));
+      localStorage.setItem('history', JSON.stringify(uniqueArr));
     } else {
       this.setState({
         count: this.state.count + 1,
         headers: null,
         response: body,
-        trigger: true,
+        fetching: false,
       });
     }
+    console.log(Date.now() / 1000);
   };
-
-  handleHistory = (method,url,body) => {
-    console.log(method,url,body);
-
-  }
 
   async componentDidMount() {
     let history = JSON.parse(localStorage.getItem('history'));
     history && this.setState({ history });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.fetching !== this.state.fetching) {
+      console.log('fetching....', this.state.fetching);
+      this.setState({ fetching: this.state.fetching });
+    }
   }
 
   render() {
@@ -66,7 +110,7 @@ class App extends React.Component {
         <main>
           <Form prompt="GO!" handler={this.handleForm} />
           <section id="results">
-            <History props={this.state.storageArray} handler={this.handleHistory} />
+            <History props={this.state.storageArray} />
             <If condition={this.state.trigger}>
               <Then>
                 <Results props={this.state} />

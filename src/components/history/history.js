@@ -1,12 +1,7 @@
 import React from 'react';
 import './history.scss';
 
-function History({ props, handler }) {
-  function historyClick(e) {
-    let i = e.target.id;
-    let { method, url, body } = props[i];
-    handler(method, url, body);
-  }
+function History({ props }) {
   return (
     <section id="history">
       <table>
@@ -20,12 +15,13 @@ function History({ props, handler }) {
           {props.map((val, i) => {
             return (
               <tr
-                key={val.methot + val.url}
+                key={i + val.methot + val.url}
                 data-testid="url"
                 onClick={historyClick}
               >
-                <td className="fwidth">{val.method}</td>
-                <td id={i}>{val.url}</td>
+                <th className="fwidth" id={`his${val.method}`}>{val.method}</th>
+                <td>{val.url}</td>
+                <td style={{ display: 'none' }}>{val.body}</td>
               </tr>
             );
           })}
@@ -36,3 +32,21 @@ function History({ props, handler }) {
 }
 
 export default History;
+
+function historyClick(e) {
+  let method = e.currentTarget.childNodes[0].innerHTML;
+  let url = e.currentTarget.childNodes[1].innerHTML;
+  let body = e.currentTarget.childNodes[2].innerHTML;
+
+  const input = document.getElementById(`url`);
+  input.value = url;
+
+  const selected = document.getElementById(`${method}`);
+  selected.click();
+
+  const text = document.getElementById('body');
+  text.value = body;
+
+  // const submit = document.getElementById('submit');
+  // submit.click();
+}
