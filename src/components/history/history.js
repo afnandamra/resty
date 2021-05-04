@@ -33,7 +33,7 @@ function History({ props }) {
 
 export default History;
 
-function historyClick(e) {
+async function historyClick(e) {
   let method = e.currentTarget.childNodes[0].innerHTML;
   let url = e.currentTarget.childNodes[1].innerHTML;
   let body = e.currentTarget.childNodes[2].innerHTML;
@@ -42,11 +42,11 @@ function historyClick(e) {
   input.value = url;
 
   const selected = document.getElementById(`${method}`);
-  selected.click();
+  await selected.click();
 
   const text = document.getElementById('body');
   text.value = body;
 
-  // const submit = document.getElementById('submit');
-  // submit.click();
+  const submit = document.getElementById('submit');
+  await submit.click();
 }
