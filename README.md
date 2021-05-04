@@ -16,7 +16,7 @@ RESTy Phase 2: Connect RESTy with APIs, running live requests
 
 ### UML Diagram
 
-![UML Lab26](public/UML27.jpg)
+![UML Lab27](public/UML27.jpg)
 
 ## Resources
 

@@ -26,7 +26,7 @@ class Form extends React.Component {
       if (this.state.method === 'POST' || this.state.method === 'PUT') {
         const result = await superagent[this.state.method.toLowerCase()](
           e.target.url.value
-        ).send(reqBody)
+        ).send(reqBody);
         let { headers, body } = result;
         this.props.handler(headers, body, this.state);
       } else {
@@ -52,40 +52,42 @@ class Form extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
-        <label>URL:</label>
-        <input
-          type="text"
-          name="url"
-          placeholder="http://api.url.here"
-        />
-        <textarea type="text" name="body" placeholder="Request body..." rows="6" cols="40" />
-        <div id="rest-buttons">
-          <span
-            className={`button ${this.state.method === 'GET'}`}
-            onClick={this.changeMethod}
-          >
-            GET
-          </span>
-          <span
-            className={`button ${this.state.method === 'POST'}`}
-            onClick={this.changeMethod}
-          >
-            POST
-          </span>
-          <span
-            className={`button ${this.state.method === 'PUT'}`}
-            onClick={this.changeMethod}
-          >
-            PUT
-          </span>
-          <span
-            className={`button ${this.state.method === 'DELETE'}`}
-            onClick={this.changeMethod}
-          >
-            DELETE
-          </span>
-        </div>
-        <button type="submit">{this.props.prompt}</button>
+          <label>URL:</label>
+          <input type="text" name="url" placeholder="http://api.url.here" />
+          <textarea
+            type="text"
+            name="body"
+            placeholder="Request body..."
+            rows="6"
+            cols="40"
+          />
+          <div id="rest-buttons">
+            <span
+              className={`button ${this.state.method === 'GET'}`}
+              onClick={this.changeMethod}
+            >
+              GET
+            </span>
+            <span
+              className={`button ${this.state.method === 'POST'}`}
+              onClick={this.changeMethod}
+            >
+              POST
+            </span>
+            <span
+              className={`button ${this.state.method === 'PUT'}`}
+              onClick={this.changeMethod}
+            >
+              PUT
+            </span>
+            <span
+              className={`button ${this.state.method === 'DELETE'}`}
+              onClick={this.changeMethod}
+            >
+              DELETE
+            </span>
+          </div>
+          <button type="submit">{this.props.prompt}</button>
         </fieldset>
       </form>
     );
