@@ -1,7 +1,12 @@
 import React from 'react';
 import './history.scss';
 
-function History({ props }) {
+function History({ props, handler }) {
+  function historyClick(e) {
+    let i = e.target.id;
+    let { method, url, body } = props[i];
+    handler(method, url, body);
+  }
   return (
     <section id="history">
       <table>
@@ -12,11 +17,15 @@ function History({ props }) {
           </tr>
         </thead>
         <tbody>
-          {props.methods.map((val, i) => {
+          {props.map((val, i) => {
             return (
-              <tr key={i} data-testid="url">
-                <td className="fwidth">{val}</td>
-                <td>{props.urls[i]}</td>
+              <tr
+                key={val.methot + val.url}
+                data-testid="url"
+                onClick={historyClick}
+              >
+                <td className="fwidth">{val.method}</td>
+                <td id={i}>{val.url}</td>
               </tr>
             );
           })}

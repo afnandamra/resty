@@ -1,9 +1,9 @@
-# LAB - Props and State
+# LAB - Component Composition
 
-RESTy Phase 2: Connect RESTy with APIs, running live requests
+RESTy Phase 3: Add conditional rendering to RESTy
 
 **Author:** Afnan Damra
-**Version:** 2.0.0
+**Version:** 3.0.0
 
 **Links:**
 
@@ -16,14 +16,14 @@ RESTy Phase 2: Connect RESTy with APIs, running live requests
 
 ### UML Diagram
 
-![UML Lab27](public/UML27.jpg)
+![UML Lab28](public/UML28.jpg)
 
 ## Resources
 
-[React docs](https://reactjs.org/docs/getting-started.html)
-[react pretty JSON](https://github.com/mac-s-g/react-json-view)
-[testing-library docs](https://testing-library.com/docs/)
-[deploying gh-pages](https://github.com/gitname/react-gh-pages)
+- [React docs](https://reactjs.org/docs/getting-started.html)
+- [react pretty JSON](https://github.com/mac-s-g/react-json-view)
+- [testing-library docs](https://testing-library.com/docs/)
+- [deploying gh-pages](https://github.com/gitname/react-gh-pages)
 
 ---
 

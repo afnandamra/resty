@@ -1,13 +1,13 @@
 import React from 'react';
 import './form.scss';
 const superagent = require('superagent');
-
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       url: '',
       method: 'GET',
+      body: '',
     };
   }
 
@@ -20,6 +20,7 @@ class Form extends React.Component {
     this.setState({
       url: e.target.url.value,
       method: this.state.method,
+      body: e.target.body.value,
     });
     try {
       let reqBody = e.target.body.value;
@@ -36,12 +37,6 @@ class Form extends React.Component {
         let { headers, body } = result;
         this.props.handler(headers, body, this.state);
       }
-      // const raw = await fetch(e.target.url.value, {
-      //   // method: this.state.method,
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
     } catch (e) {
       this.props.handler(null, e.message, this.state);
       console.log(e.message);
@@ -58,7 +53,7 @@ class Form extends React.Component {
             type="text"
             name="body"
             placeholder="Request body..."
-            rows="6"
+            rows="3"
             cols="40"
           />
           <div id="rest-buttons">
