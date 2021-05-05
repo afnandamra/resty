@@ -25,6 +25,22 @@ class Form extends React.Component {
     this.props.handler(this.state);
   };
 
+  historyData = (data) => {
+    const input = document.getElementById('url');
+    input.value = data.url;
+    const selected = document.getElementById(data.method);
+    selected.click();
+    const text = document.getElementById('body');
+    text.value = data.body;
+  }
+
+  componentDidMount() {
+    console.log(this.props.data);
+    if (this.props.data) {
+      this.historyData(this.props.data)
+    }
+  }
+
   render() {
     return (
       <>
@@ -75,7 +91,7 @@ class Form extends React.Component {
             </span>
           </div>
           <button type="submit" id="submit">
-            {this.props.prompt}
+            GO!
           </button>
         </form>
       </>
