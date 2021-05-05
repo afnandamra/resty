@@ -1,0 +1,8 @@
+#home {
+  #results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+    flex-wrap: wrap;
+  }
+}

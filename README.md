@@ -1,22 +1,25 @@
-# LAB - Component Composition
+# LAB - Routing
 
-RESTy Phase 3: Add conditional rendering to RESTy
+- RESTy Phase 1: Begin work on the RESTy API testing application
+- RESTy Phase 2: Connect RESTy with APIs, running live requests
+- RESTy Phase 3: Add conditional rendering to RESTy
+- RESTy Phase 4: Add routing and conditional rendering to RESTy
 
 **Author:** Afnan Damra
-**Version:** 3.0.0
+**Version:** 4.0.0
 
 **Links:**
 
 - [Repo Link](https://github.com/afnandamra/resty)
 - [Deployed Site](https://ad-resty-401.netlify.app/)
 - [GitHub pages Deployement](https://afnandamra.github.io/resty/)
-- [PR Link](https://github.com/afnandamra/resty/pull/4)
+- [PR Link](https://github.com/afnandamra/resty/pull/9)
 
 ## Documentation
 
 ### UML Diagram
 
-![UML Lab28](public/UML27.jpg)
+![UML Lab29](public/UML29.jpg)
 
 ## Resources
 
