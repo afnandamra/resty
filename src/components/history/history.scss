@@ -1,15 +1,16 @@
 table {
   margin-left: 6rem;
   border-collapse: collapse;
-  //   table-layout: fixed;
+  table-layout: fixed;
   width: 70%;
   border: 1px solid #222;
   background-color: white;
-
+  border-radius: 10px;
   thead {
     border-bottom: 3px solid black;
   }
-  th,td{
+  th,
+  td {
     border-bottom: 1px solid black;
   }
   td {
